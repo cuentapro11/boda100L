@@ -283,27 +283,14 @@ body {
 .countdown-number {
     font-family: 'Playfair Display', serif;
     font-size: 3.75rem;
-    font-weight: 700;
-    color: transparent;
+    font-weight: 600;
+    color: hsl(var(--brown-dark));
     margin-bottom: 0.5rem;
     animation: flip-in 0.6s ease-out;
-    letter-spacing: 0.02em;
-    background: linear-gradient(180deg, hsl(var(--gold)), hsl(var(--gold-dark)));
-    -webkit-background-clip: text;
-    background-clip: text;
-    text-shadow: 0 2px 8px hsl(var(--gold) / 0.25);
+    letter-spacing: 0.01em;
     font-variant-numeric: tabular-nums lining-nums;
-    position: relative;
-}
-
-.countdown-number::after {
-    content: "";
-    display: block;
-    width: 60%;
-    height: 2px;
-    margin: 0.25rem auto 0;
-    background: hsl(var(--gold) / 0.6);
-    border-radius: 2px;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    line-height: 1.1;
 }
 
 .countdown-label {
