@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael & Juana - Invitación de Boda</title>
+    <link rel="stylesheet" href="ccs-2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</head>
+<body>
+    <!-- Modal de Bienvenida -->
+    <div id="welcomeModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Invitación de Boda</h2>
+                <h3 class="modal-names">Rafael <span class="ampersand">&</span> Juana</h3>
+                <p class="modal-subtitle">Bienvenido a nuestra celebración</p>
+                <div class="modal-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button id="enterWithMusic" class="btn-wedding">🎵 Entrar con Música</button>
+                <button id="enterWithoutMusic" class="btn-outline">🔇 Entrar sin Música</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reproductor de música -->
+    <div id="musicPlayer" class="music-player" style="display: none;">
+        <button id="musicToggle" class="music-button" title="Reproducir/Pausar música">
+            <svg id="volumeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.08"></path>
+            </svg>
+        </button>
+        <div id="youtube-player" style="position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="date">15.08.2025</div>
+                <h1 class="names">Rafael <span class="ampersand">&</span> Juana</h1>
+                <blockquote class="quote">
+                    "Todos somos mortales,<br />
+                    hasta el primer beso y la segunda copa de vino"
+                </blockquote>
+                <div class="scroll-indicator">
+                    <div class="scroll-mouse">
+                        <div class="scroll-wheel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Countdown -->
+        <section class="countdown-section">
+            <h2 class="section-title">Falta</h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">DÍAS</div>
+                </div>
+                <div class="countdown-separator">|</div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">HS</div>
+                </div>
+                <div class="countdown-separator">|</div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">MIN</div>
+                </div>
+                <div class="countdown-separator">|</div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">SEG</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ceremony & Celebration -->
+        <section class="events-section">
+            <div class="events-container">
+                <!-- Ceremony -->
+                <div class="event-card">
+                    <div class="event-icon">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/fshosubk.json"
+                            trigger="loop"
+                            stroke="light"
+                            colors="primary:#e8b730,secondary:#c79816"
+                            style="width:110px;height:110px">
+                        </lord-icon>
+                    </div>
+                    <h3 class="event-title">Ceremonia</h3>
+                    <div class="event-details">
+                        <h4>Día</h4>
+                        <p>Sábado 15 de Agosto - 10hs</p>
+                    </div>
+                    <div class="event-details">
+                        <h4>Lugar</h4>
+                        <p>Parroquia Nuestra Señora de Lujan</p>
+                        <p class="event-address">Av. Pergamino 203 - Santo Domingo</p>
+                    </div>
+                    <button class="btn-wedding" onclick="openLocation('ceremony')">¿Cómo llegar?</button>
+                </div>
+
+                <!-- Celebration -->
+                <div class="event-card">
+                    <div class="event-icon">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/yvgmrqny.json"
+                            trigger="loop"
+                            state="in-reveal"
+                            stroke="light"
+                            colors="primary:#e8b730,secondary:#c79816"
+                            style="width:110px;height:110px">
+                        </lord-icon>
+                    </div>
+                    <h3 class="event-title">Celebración</h3>
+                    <div class="event-details">
+                        <h4>Día</h4>
+                        <p>Sábado 15 de Agosto - 20hs</p>
+                    </div>
+                    <div class="event-details">
+                        <h4>Lugar</h4>
+                        <p>Salón de fiestas Avril</p>
+                        <p class="event-address">Av. Los Reartes 12 - Santo Domingo</p>
+                    </div>
+                    <button class="btn-wedding" onclick="openLocation('celebration')">¿Cómo llegar?</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery -->
+        <section class="gallery-section">
+            <div class="gallery-container">
+                <h2 class="section-title">Retratos de Nuestro Amor</h2>
+                <p class="section-subtitle">Un minuto, un segundo, un instante que queda en la eternidad</p>
+                
+                <div class="camera-icon">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/wsaaegar.json"
+                        trigger="loop"
+                        state="in-reveal"
+                        stroke="light"
+                        colors="primary:#e8b730,secondary:#c79816"
+                        style="width:110px;height:110px">
+                    </lord-icon>
+                </div>
+
+                <!-- Carrusel -->
+                <div class="carousel-container">
+                    <button class="carousel-btn carousel-prev" id="prevBtn">❮</button>
+                    <div class="carousel-track-container">
+                        <div class="carousel-track" id="carouselTrack">
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=400&fit=crop&crop=center" alt="Pareja de novios en ceremonia">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400&h=400&fit=crop&crop=center" alt="Anillos de boda">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&h=400&fit=crop&crop=center" alt="Pareja romántica en jardín">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&h=400&fit=crop&crop=center" alt="Decoración de boda">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=400&h=400&fit=crop&crop=center" alt="Mesa de boda elegante">
+                            </div>
+                            <div class="carousel-item">
+                                <a href="https://ibb.co/yFBXXsyB"><img src="https://i.ibb.co/5hx66c8x/food-and-wine-festivals-768x513.jpg" alt="food-and-wine-festivals-768x513" border="0"></a>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400&h=400&fit=crop&crop=center" alt="Vestido de novia elegante">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=400&h=400&fit=crop&crop=center" alt="Manos con anillos de compromiso">
+                            </div>
+                            <div class="carousel-item">
+                                <a href="https://ibb.co/TBSJRJ8Q"><img src="https://i.ibb.co/8DpG2G5y/R.jpg" alt="R" border="0"></a>
+                            </div>
+                            <div class="carousel-item">
+                                <a href="https://ibb.co/LDycc5kH"><img src="https://i.ibb.co/nqyYYCgt/7ed3f087d03a38e4be8ecf667985658e.jpg" alt="7ed3f087d03a38e4be8ecf667985658e" border="0"></a>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=400&h=400&fit=crop&crop=center" alt="Pareja en la playa al atardecer">
+                            </div>
+                            <div class="carousel-item">
+                                <a href="https://ibb.co/LDycc5kH"><img src="https://i.ibb.co/nqyYYCgt/7ed3f087d03a38e4be8ecf667985658e.jpg" alt="7ed3f087d03a38e4be8ecf667985658e" border="0"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn carousel-next" id="nextBtn">❯</button>
+                </div>
+
+                <div class="carousel-counter">
+                    <span id="currentSlide">1</span> / <span id="totalSlides">12</span> fotos
+                </div>
+            </div>
+        </section>
+
+        <!-- Party Information -->
+        <section class="party-section">
+            <div class="party-container">
+                <h2 class="section-title">Fiesta</h2>
+                <p class="section-subtitle">Hagamos juntos una fiesta épica. Aquí algunos detalles a tener en cuenta.</p>
+
+                <div class="party-grid">
+                    <div class="party-card">
+                        <div class="party-icon">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/zxaptliv.json"
+                                trigger="loop"
+                                state="in-reveal"
+                                stroke="light"
+                                colors="primary:#e8b730,secondary:#c79816"
+                                style="width:110px;height:110px">
+                            </lord-icon>
+                        </div>
+                        <h3>Música</h3>
+                        <p>¿Cuál es la canción que no debe faltar en la PlayList de la fiesta?</p>
+                        <button class="btn-wedding" onclick="suggestMusic()">Sugerir canción</button>
+                    </div>
+
+                    <div class="party-card">
+                        <div class="party-icon">
+                            <svg class="bowtie-icon" width="110" height="110" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="gBow" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="#e8b730"/>
+                                        <stop offset="100%" stop-color="#c79816"/>
+                                    </linearGradient>
+                                </defs>
+                                <g>
+                                    <!-- Ala izquierda del moño -->
+                                    <path d="M8 20 C14 14, 26 18, 28 26 C26 34, 14 38, 8 32 Z" fill="url(#gBow)"/>
+                                    <!-- Nudo central -->
+                                    <rect x="28" y="24" width="8" height="16" rx="3" fill="url(#gBow)"/>
+                                    <!-- Ala derecha del moño -->
+                                    <path d="M56 20 C50 14, 38 18, 36 26 C38 34, 50 38, 56 32 Z" fill="url(#gBow)"/>
+                                    <!-- brillo sutil -->
+                                    <circle cx="32" cy="32" r="2" fill="#fff" opacity="0.35"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <h3>Dress Code</h3>
+                        <p>Una orientación para tu vestuario</p>
+                        <button class="btn-wedding" onclick="showDressCode()">Ver más</button>
+                    </div>
+
+                    <div class="party-card">
+                        <div class="party-icon">
+                            <lord-icon
+                                src="https://cdn.lordicon.com/fikcyfpp.json"
+                                trigger="loop"
+                                state="in-reveal"
+                                stroke="light"
+                                colors="primary:#e8b730,secondary:#c79816"
+                                style="width:110px;height:110px">
+                            </lord-icon>
+                        </div>
+                        <h3>Tips y Notas</h3>
+                        <p>Información adicional para tener en cuenta</p>
+                        <button class="btn-wedding" onclick="showTips()">+ Info</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gifts -->
+        <section class="gifts-section">
+            <div class="gifts-container">
+                <h2 class="section-title">Regalos</h2>
+                <p class="section-subtitle">Si deseas regalarnos algo más que tu hermosa presencia.</p>
+                
+                <div class="gift-icon">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/kezeezyg.json"
+                        trigger="loop"
+                        state="hover-roll"
+                        stroke="light"
+                        colors="primary:#e8b730,secondary:#c79816"
+                        style="width:110px;height:110px">
+                    </lord-icon>
+                </div>
+
+                <button class="btn-wedding" onclick="showGifts()">Ver más</button>
+            </div>
+        </section>
+
+        <!-- RSVP -->
+        <section class="rsvp-section">
+            <div class="rsvp-container">
+                <h2 class="section-title">Confirma tu Asistencia</h2>
+                <p class="section-subtitle">Comparte este hermoso momento con nosotros</p>
+                
+                <div class="whatsapp-icon">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/dnphlhar.json"
+                        trigger="loop"
+                        state="morph-circle"
+                        speed="0.5"
+                        colors="primary:#242424,secondary:#16c79e"
+                        style="width:110px;height:110px">
+                    </lord-icon>
+                </div>
+
+                <div class="hashtag">#rafaelyjuana</div>
+                
+                <button class="btn-wedding" onclick="confirmAttendance()">Confirmar Asistencia</button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Con amor,</p>
+                <h3>Rafael & Juana</h3>
+                <p class="footer-date">15 de Agosto, 2025</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast">
+        <div id="toastContent"></div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="java2.js"></script>
+</body>
+</html>
