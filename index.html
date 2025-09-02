@@ -9,22 +9,19 @@
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
 </head>
 <body>
-    <!-- Modal de Bienvenida -->
-    <div id="welcomeModal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Invitación de Boda</h2>
-                <h3 class="modal-names">Rafael <span class="ampersand">&</span> Juana</h3>
-                <p class="modal-subtitle">Bienvenido a nuestra celebración</p>
-                <div class="modal-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                    </svg>
-                </div>
-            </div>
-            <div class="modal-buttons">
-                <button id="enterWithMusic" class="btn-wedding">🎵 Entrar con Música</button>
-                <button id="enterWithoutMusic" class="btn-outline">🔇 Entrar sin Música</button>
+    <!-- Pantalla de Bienvenida a pantalla completa -->
+    <div id="welcomeModal" class="welcome-hero">
+        <img class="welcome-hero-bg" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&h=1080&fit=crop&crop=center" alt="Rafael y Juana" />
+        <div class="welcome-hero-overlay"></div>
+
+        <div class="welcome-hero-content">
+            <div class="welcome-date">15.05.2025</div>
+            <h1 class="welcome-names names">Rafael <span class="ampersand">&</span> Juana</h1>
+            <p class="welcome-subtitle">La música de fondo es parte de la experiencia</p>
+
+            <div class="welcome-actions">
+                <button id="enterWithMusic" class="btn-wedding">Ingresar con música</button>
+                <button id="enterWithoutMusic" class="btn-outline light">Ingresar sin música</button>
             </div>
         </div>
     </div>
