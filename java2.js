@@ -9,8 +9,34 @@ let enableMusic = false;
 document.addEventListener('DOMContentLoaded', function() {
     initializeCountdown();
     initializeCarousel();
+    syncWelcomeCover();
     initializeModal();
 });
+
+// Sincroniza la imagen de portada entre el hero y el modal de bienvenida
+function syncWelcomeCover() {
+    try {
+        const welcomeImage = document.querySelector('.welcome-hero-bg');
+        if (!welcomeImage) return;
+
+        const heroImg = document.querySelector('.hero-bg');
+        if (heroImg && heroImg.getAttribute('src')) {
+            welcomeImage.src = heroImg.getAttribute('src');
+            return;
+        }
+
+        const heroSection = document.querySelector('.hero-section');
+        if (!heroSection) return;
+        const bg = getComputedStyle(heroSection).backgroundImage || '';
+        // Toma la primera url() de la lista de backgrounds
+        const match = bg.match(/url\(["']?([^"')]+)["']?\)/);
+        if (match && match[1]) {
+            welcomeImage.src = match[1];
+        }
+    } catch (_) {
+        // Silencioso: si falla, mantenemos la imagen por defecto
+    }
+}
 
 // Modal de bienvenida
 function initializeModal() {
