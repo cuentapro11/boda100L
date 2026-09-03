@@ -1,6 +1,7 @@
 // Variables globales
 let isPlaying = false;
 let player = null;
+let playerReady = false;
 let currentSlide = 0;
 let totalSlides = 0;
 let enableMusic = false;
@@ -11,6 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCarousel();
     syncWelcomeCover();
     initializeModal();
+    loadYouTubeAPI(); // Se precarga desde el inicio (no en el click) para que
+                       // playVideo() pueda ejecutarse de forma síncrona dentro
+                       // del gesto del usuario. Esto es lo que exige iOS Safari.
 });
 
 // Sincroniza la imagen de portada entre el hero y el modal de bienvenida
@@ -47,11 +51,18 @@ function initializeModal() {
     enterWithMusic.addEventListener('click', function() {
         enableMusic = true;
         modal.style.display = 'none';
-        if (window.YT && window.YT.Player) {
-            initializeYouTubePlayer();
-        } else {
-            loadYouTubeAPI();
+        document.getElementById('musicPlayer').style.display = 'block';
+
+        // El player ya existe (se precargó en DOMContentLoaded), así que
+        // playVideo() se llama de inmediato, dentro del mismo tick del click.
+        // Eso es lo que iOS necesita para no bloquear el audio.
+        if (playerReady && player) {
+            player.playVideo();
+            isPlaying = true;
+            updateMusicIcon();
         }
+        // Si el player todavía no está listo (conexión lenta), onPlayerReady
+        // se encarga de reproducir apenas termine de inicializar.
     });
 
     enterWithoutMusic.addEventListener('click', function() {
@@ -70,8 +81,6 @@ function loadYouTubeAPI() {
 
 // Función llamada por la API de YouTube
 function initializeYouTubePlayer() {
-    if (!enableMusic) return;
-
     player = new YT.Player('youtube-player', {
         height: '1',
         width: '1',
@@ -98,14 +107,15 @@ function initializeYouTubePlayer() {
 }
 
 function onPlayerReady(event) {
-    const musicPlayer = document.getElementById('musicPlayer');
+    playerReady = true;
     const musicToggle = document.getElementById('musicToggle');
-    
-    musicPlayer.style.display = 'block';
     musicToggle.addEventListener('click', toggleMusic);
-    
-    // Reproducir si está habilitada la música
-    if (enableMusic) {
+
+    // Caso borde: el usuario ya hizo click en "con música" antes de que el
+    // player terminara de inicializar (ej. conexión lenta). Lo reproducimos
+    // apenas esté listo.
+    if (enableMusic && !isPlaying) {
+        document.getElementById('musicPlayer').style.display = 'block';
         event.target.playVideo();
         isPlaying = true;
         updateMusicIcon();
@@ -161,7 +171,7 @@ function updateMusicIcon() {
 
 // Countdown
 function initializeCountdown() {
-    const targetDate = new Date('2025-12-31T23:59:59').getTime();
+    const targetDate = new Date('2026-12-31T10:00:00').getTime();
     
     function updateCountdown() {
         const now = new Date().getTime();
@@ -268,7 +278,7 @@ function updateSlideCounter() {
 // Funciones de los botones
 function openLocation(location) {
     const addresses = {
-        ceremony: "Parroquia Nuestra Señora de Lujan, Av. Pergamino 203, Santo Domingo",
+        ceremony: "Parroquia Nuestra Señora de Luján, Av. Pergamino 203, Santo Domingo",
         celebration: "Salón de fiestas Avril, Av. Los Reartes 12, Santo Domingo"
     };
     
@@ -300,7 +310,7 @@ function showGifts() {
 //
 
 function confirmAttendance() {
-    const message = "¡Hola! Quiero confirmar mi asistencia a la boda de Rafael y Juana el 15 de Agosto 💒✨";
+    const message = "¡Hola! Quiero confirmar mi asistencia a la boda de Rafael y Juana el 31 de Diciembre 💒✨";
     const whatsappUrl = `https://wa.me/1234567890?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
