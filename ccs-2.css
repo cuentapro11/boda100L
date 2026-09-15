@@ -176,7 +176,7 @@ body {
     width: 100%;
     height: 100vh;
     height: 100svh; /* soporta barras de navegador móviles */
-    background-image: url('https://i.ibb.co/h1HBT0wD/Chat-GPT-Image-29-ago-2025-12-53-38-p-m.png'), url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&h=1080&fit=crop&crop=center');
+    background-image: url('foto0.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -501,7 +501,7 @@ body {
 
 .carousel-item {
     flex: 0 0 calc(100% / var(--items-per-view));
-    height: 480px;
+    height: 560px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -647,7 +647,7 @@ body {
 }
 
 .gift-icon,
-.whatsapp-icon {
+.form-icon {
     width: 110px;
     height: 110px;
     margin: 0 auto 2rem;
@@ -664,7 +664,7 @@ body {
     animation: gentle-bounce 2s ease-in-out infinite;
 }
 
-.whatsapp-icon {
+.form-icon {
     animation: gentle-pulse 5s ease-in-out infinite;
 }
 
@@ -777,7 +777,7 @@ body {
     }
 
     .carousel-item {
-        height: 320px;
+        height: 400px;
     }
     
     .carousel-btn {
@@ -801,7 +801,7 @@ body {
     }
 
     .carousel-item {
-        height: 280px;
+        height: 340px;
     }
     
     .modal-content {

@@ -277,9 +277,10 @@ function updateSlideCounter() {
 
 // Funciones de los botones
 function openLocation(location) {
+    // Direcciones de ejemplo: reemplázalas por las reales de tu evento.
     const addresses = {
-        ceremony: "Parroquia Nuestra Señora de Luján, Av. Pergamino 203, Santo Domingo",
-        celebration: "Salón de fiestas Avril, Av. Los Reartes 12, Santo Domingo"
+        ceremony: "Calle Duarte 45, Villa Mella, Santo Domingo Norte, República Dominicana",
+        celebration: "Av. Independencia 120, Santo Domingo, República Dominicana"
     };
     
     const address = addresses[location];
@@ -287,10 +288,10 @@ function openLocation(location) {
     window.open(mapsUrl, '_blank');
 }
 
-function suggestMusic() {
-    const whatsappMessage = "¡Hola! Me gustaría sugerir una canción para la playlist de la boda de Rafael y Juana 🎵";
-    const whatsappUrl = `https://wa.me/1234567890?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappUrl, '_blank');
+// EJEMPLO: sin enlace real. Reemplaza esta función para abrir tu carpeta de
+// Google Drive donde los invitados podrán subir sus fotos.
+function uploadPhoto() {
+    showToast("Subir Foto (Ejemplo)", "Aquí se enlazará la carpeta de Google Drive para que los invitados compartan sus fotos 📸");
 }
 
 function showDressCode() {
@@ -301,18 +302,16 @@ function showTips() {
     showToast("Tips y Notas", "La ceremonia será al aire libre. Se recomienda llegar 15 minutos antes ⛪");
 }
 
+// EJEMPLO: sin enlace real. Reemplaza esta función con el enlace real a tu
+// cuenta/lista de regalos.
 function showGifts() {
-    const message = "Hola, me gustaría información sobre los regalos para la boda de Rafael y Juana 🎁";
-    const whatsappUrl = `https://wa.me/1234567890?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    showToast("Regalos (Ejemplo)", "Aquí se enlazará la información de la cuenta o lista de regalos 🎁");
 }
 
-//
-
+// EJEMPLO: sin enlace real. Reemplaza esta función para abrir tu Google Form
+// de confirmación de asistencia.
 function confirmAttendance() {
-    const message = "¡Hola! Quiero confirmar mi asistencia a la boda de Rafael y Juana el 31 de Diciembre 💒✨";
-    const whatsappUrl = `https://wa.me/1234567890?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    showToast("Confirmar Asistencia (Ejemplo)", "Aquí se enlazará el Google Form para confirmar asistencia 📝");
 }
 
 // Sistema de Toast
