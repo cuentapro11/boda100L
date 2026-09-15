@@ -662,10 +662,17 @@ body {
     color: hsl(var(--gold));
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
     animation: gentle-bounce 2s ease-in-out infinite;
+    overflow: hidden;
 }
 
 .form-icon {
     animation: gentle-pulse 5s ease-in-out infinite;
+}
+
+.form-icon svg {
+    display: block;
+    width: 85%;
+    height: 85%;
 }
 
 /* RSVP */
