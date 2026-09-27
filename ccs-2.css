@@ -1,19 +1,21 @@
 /* Variables CSS */
 :root {
-    --background: 35 25% 95%;
+    --background: 38 35% 93%;
     --foreground: 30 20% 15%;
-    --primary: 35 65% 45%;
+    --primary: 40 59% 35%;
     --primary-foreground: 35 25% 95%;
-    --gold: 42 85% 55%;
-    --gold-light: 42 80% 70%;
-    --gold-dark: 42 75% 40%;
-    --brown: 35 65% 45%;
-    --brown-light: 35 50% 60%;
-    --brown-dark: 35 70% 30%;
-    --cream: 35 25% 95%;
-    --warm-white: 35 15% 98%;
-    --shadow-elegant: 0 10px 30px -10px hsl(35 65% 45% / 0.3);
-    --shadow-gold: 0 4px 20px hsl(42 85% 55% / 0.25);
+    --gold: 44 56% 52%;
+    --gold-light: 46 72% 80%;
+    --gold-dark: 38 62% 33%;
+    --brown: 40 59% 35%;
+    --brown-light: 43 40% 63%;
+    --brown-dark: 35 33% 17%;
+    --cream: 38 35% 93%;
+    --warm-white: 40 40% 99%;
+    --shadow-elegant: 0 10px 30px -10px hsl(38 62% 33% / 0.3);
+    --shadow-gold: 0 4px 20px hsl(44 56% 52% / 0.3);
+    --gold-metallic: linear-gradient(120deg, #8A6420 0%, #C9A43E 30%, #E6CB7A 50%, #C9A43E 70%, #8A6420 100%);
+    --gold-metallic-btn: linear-gradient(120deg, #8A6420 0%, #C9A43E 35%, #EBD48C 50%, #C9A43E 65%, #8A6420 100%);
 }
 
 /* Reset y base */
@@ -153,7 +155,7 @@ body {
     height: 48px;
     border-radius: 50%;
     border: none;
-    background: linear-gradient(135deg, hsl(var(--brown)), hsl(var(--gold)));
+    background: var(--gold-metallic-btn);
     color: white;
     cursor: pointer;
     box-shadow: var(--shadow-elegant);
@@ -191,7 +193,7 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.35) 100%);
 }
 
 .hero-content {
@@ -421,7 +423,7 @@ body {
     padding: 0.75rem 2rem;
     border-radius: 9999px;
     border: none;
-    background: linear-gradient(135deg, hsl(var(--brown)), hsl(var(--gold)));
+    background: var(--gold-metallic-btn);
     color: white;
     font-weight: 500;
     cursor: pointer;
@@ -685,7 +687,7 @@ body {
 
 /* Footer */
 .footer {
-    background-color: hsl(var(--brown));
+    background-color: hsl(var(--brown-dark));
     color: white;
     padding: 2rem 1rem;
     text-align: center;
@@ -824,3 +826,310 @@ body {
         width: 100%;
     }
 }
+
+/* ===== Dorado metálico en títulos ===== */
+.section-title,
+.event-title,
+.welcome-names,
+.ampersand {
+    background: var(--gold-metallic);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: hsl(var(--gold));
+    padding: 0 0.15em;
+}
+
+.section-title,
+.event-title,
+.welcome-names {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-wedding,
+.music-button {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== Íconos dorados (SVG propios, sin servicio externo) ===== */
+.gold-icon {
+    display: block;
+    margin: auto;
+    animation: icon-float 3s ease-in-out infinite;
+}
+@keyframes icon-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+/* ===== Portada: nombres legibles sobre la foto ===== */
+.hero-content .names,
+.hero-content .date,
+.hero-content .quote {
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.hero-content .ampersand {
+    background: linear-gradient(120deg, #C9A43E 0%, #F3E3A6 45%, #E6CB7A 60%, #C9A43E 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55));
+}
+
+/* ===== Pantalla de bienvenida con más contraste ===== */
+.welcome-card {
+    background: rgba(255, 251, 244, 0.86);
+    border: 1px solid hsl(var(--gold) / 0.45);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px -20px rgba(60, 40, 10, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+.welcome-date {
+    color: hsl(var(--brown));
+}
+.welcome-title {
+    color: hsl(var(--brown-dark));
+}
+.welcome-names,
+.welcome-names .ampersand {
+    background: linear-gradient(120deg, #6E4E14 0%, #A8832E 35%, #C9A43E 50%, #A8832E 65%, #6E4E14 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.welcome-subtitle {
+    color: hsl(var(--brown-dark));
+    font-weight: 500;
+}
+.btn-outline.light {
+    border-color: hsl(var(--gold-dark));
+    color: hsl(var(--brown-dark));
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== Íconos ilustrados ===== */
+.icon-img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    display: block;
+    animation: icon-float 3s ease-in-out infinite;
+}
+.party-icon,
+.camera-icon,
+.gift-icon {
+    border: 2px solid hsl(var(--gold));
+    background-color: hsl(42 48% 86%);
+}
+.event-icon {
+    background-color: hsl(var(--warm-white));
+}
+
+/* ===== Galería más compacta (la foto conserva su tamaño) ===== */
+.gallery-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2rem;
+}
+.gallery-section .section-title {
+    margin-bottom: 0.25rem;
+}
+.gallery-section .section-subtitle {
+    margin-bottom: 1rem;
+}
+.camera-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 1.25rem;
+}
+.carousel-container {
+    margin-bottom: 0.25rem;
+}
+.carousel-item,
+.carousel-item:nth-child(n) {
+    height: auto;
+    aspect-ratio: 4 / 3;
+}
+.carousel-counter {
+    margin-top: 0.6rem;
+}
+.icon-img.icon-corbata {
+    width: 88%;
+    filter: drop-shadow(0 2px 3px rgba(110, 78, 20, 0.35));
+}
+
+/* ===== Footer dorado claro ===== */
+.footer {
+    background: linear-gradient(180deg, hsl(42 46% 80%) 0%, hsl(40 42% 71%) 100%);
+    color: hsl(var(--brown-dark));
+    border-top: 2px solid hsl(var(--gold));
+    padding: 2.5rem 1rem 2rem;
+}
+.footer-content p {
+    color: hsl(var(--brown));
+    letter-spacing: 0.05em;
+}
+.footer-content h3 {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-size: 2.4rem;
+    width: fit-content;
+    margin: 0.25rem auto;
+    padding: 0 0.15em;
+    background: linear-gradient(120deg, #4E3609 0%, #7E5F1C 35%, #A8832E 50%, #7E5F1C 65%, #4E3609 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.footer-content p {
+    color: hsl(var(--brown-dark));
+}
+.footer-date {
+    color: hsl(var(--brown-dark));
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+/* ===== Tarjetas de Detalles más delgadas ===== */
+.party-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    justify-content: center;
+    gap: 1.75rem;
+    margin-top: 2rem;
+}
+.party-card {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 1.75rem 1.5rem;
+    border-radius: 1rem;
+}
+.form-icon {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 2px solid hsl(var(--gold));
+    background-color: hsl(42 48% 86%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== Íconos sin círculo ===== */
+.event-icon,
+.camera-icon,
+.party-icon,
+.gift-icon,
+.form-icon {
+    border: none !important;
+    border-radius: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+.event-icon { width: 140px; height: 120px; }
+.camera-icon { width: 130px; height: 100px; }
+.party-icon { width: 130px; height: 110px; }
+.gift-icon { width: 130px; height: 120px; }
+.form-icon { width: 110px; height: 110px; }
+.icon-img {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 4px 6px rgba(110, 78, 20, 0.18));
+}
+.icon-img.icon-corbata { width: 100%; }
+
+/* ===== Tarjetas de Detalles: forma original, más delgadas ===== */
+.party-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
+}
+.party-card {
+    max-width: 320px;
+    padding: 2rem;
+    border: 2px solid hsl(var(--gold) / 0.2);
+    border-radius: 0.5rem;
+    background-color: hsl(var(--warm-white));
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== Bienvenida sin recuadro, texto legible sobre el fondo borroso ===== */
+.welcome-card {
+    background: none;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+.welcome-date,
+.welcome-title,
+.welcome-subtitle {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.95), 0 0 3px rgba(255, 255, 255, 0.9);
+}
+.welcome-names {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+}
+
+/* ===== Carrusel: el marco se ajusta a cada foto ===== */
+.carousel-track {
+    align-items: center;
+}
+.carousel-item,
+.carousel-item:nth-child(n) {
+    height: 300px;
+    aspect-ratio: auto;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0 8px;
+    overflow: visible;
+}
+.carousel-item img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-sizing: border-box;
+    background: #ffffff;
+    padding: 8px 8px 24px;
+    border: 1px solid #eaeaea;
+    border-radius: 6px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.carousel-track-container {
+    padding: 6px 0 14px;
+}
+@media (min-width: 769px) {
+    .carousel-item,
+    .carousel-item:nth-child(n) {
+        height: 440px;
+    }
+}
+.carousel-track-container {
+    box-shadow: none;
+}
+
+/* ===== Portada: texto en la parte inferior para no tapar la foto ===== */
+.hero-content {
+    align-items: flex-end;
+    padding-bottom: calc(2.5rem + env(safe-area-inset-bottom, 0px));
+}
+.hero-overlay {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.45) 68%, rgba(0,0,0,0.7) 100%);
+}
+.hero-content .names {
+    margin: 0.35rem 0 0.5rem;
+}
+.hero-content .quote {
+    margin-bottom: 1.25rem;
+}
+
+/* ===== Íconos un poco más pequeños ===== */
+.event-icon { width: 112px; height: 96px; }
+.camera-icon { width: 104px; height: 80px; }
+.party-icon { width: 104px; height: 88px; }
+.gift-icon { width: 104px; height: 96px; }
+.form-icon { width: 88px; height: 88px; }
+.form-icon svg { width: 80px; height: 80px; }
