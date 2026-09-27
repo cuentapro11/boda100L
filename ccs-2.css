@@ -1133,3 +1133,11 @@ body {
 .gift-icon { width: 104px; height: 96px; }
 .form-icon { width: 88px; height: 88px; }
 .form-icon svg { width: 80px; height: 80px; }
+
+/* ===== Títulos más grandes ===== */
+.section-title { font-size: 3.6rem; }
+.event-title { font-size: 2.8rem; }
+@media (max-width: 768px) {
+    .section-title { font-size: 2.6rem; }
+    .event-title { font-size: 2.5rem; }
+}
